@@ -17,4 +17,4 @@ RUN pip3 install flask
 
 EXPOSE 5001
 
-CMD ["python3", "app/table.py && app/module.py"]
+CMD ["sh", "-c", "python3 app/table.py && python3 app/module.py"]
