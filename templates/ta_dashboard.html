@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <title>Student Dashboard</title>
+<style>
+  h2{
+    display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  font-weight: bold;
+  }
+  table{
+    border: solid 1px gray;
+    padding: 15px 15px 15px 15px;
+  }
+
+.btn-outline-secondary, .btn-outline-warning {
+  padding: 14px 20px;
+  float: left;
+  width: 50%;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+
+<body>
+	Welcome {{username}}
+   <br><br>
+   <caption>DETAILS OF PROJECTS UNDER YOU</caption>
+    <table class="table table-hover">
+  
+  <thead>
+    <tr role="row">
+      <th role="columnheader" scope="col">GROUP ID</th>
+      <th role="columnheader" scope="col">PROJECT NAME</th>
+      <th></th>
+    </tr>
+  </thead>
+  {% for item in results %}
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td role="cell" data-label="GROUP ID">{{item[0][0]}}</td>
+      <td role="cell" data-label="PROJECT NAME"><a href="/update_TA_status?Group_Id={{item[0][0]}}">{{item[0][1]}}</a></td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+
+<a href="/Logout" class = "btn btn-success">Logout</a>
+
+
+</body>
+</html>

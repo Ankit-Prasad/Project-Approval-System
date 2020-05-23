@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <title>Student Dashboard</title>
+<style>
+  h2{
+    display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  font-weight: bold;
+  }
+  table{
+    border: solid 1px gray;
+    padding: 15px 15px 15px 15px;
+  }
+
+.btn-outline-secondary, .btn-outline-warning {
+  padding: 14px 20px;
+  float: left;
+  width: 50%;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<body>
+
+<h2>Student Dashboard</h2>
+<h3>{{course}}</h3>
+
+
+<table class="table table-hover">
+  <tbody>
+  <tr>
+    <td>Enter Project Details</td>
+    <td><a href="/uploadproject?course={{course}}" class="btn btn-outline-primary">Upload Project Details</a></td>
+    <td>{{submit}}</td>
+  </tr>
+
+  <tr>
+    <td>View Faculty Response</td>
+    <td><a href="#" onclick="show_response('{{course}}')" class="btn btn-outline-primary">Show</a></td>
+    <td><div id="result_div"></div></td>
+ </tr>
+
+  <tr>
+    <td>View Faculty Suggestion</td>
+    <td><a href="#" onclick="show_suggestion('{{course}}')" class="btn btn-outline-primary">Show</a></td>
+    <td><div id="result_div2"></div></td>
+  </tr>
+
+  <tbody style="display: none" id="hidden">
+    <tr>
+      <td><a href="/uploadproject?course={{course}}" class="btn btn-outline-primary">Upload new Project</a></td>
+    </tr>
+  </tbody>
+
+ 
+  <tr>
+    <td>View TA Response</td>
+    <td><a href="#" onclick="showTAresponse('{{course}}')" class="btn btn-outline-primary">Show</a></td>
+    <td><div id="result_div3"></div></td>
+  </tr>
+
+  </tbody>
+</table>
+
+
+<div class="clearfix">
+      
+       <a href="/GoToStudentCourse" class="btn btn btn-outline-secondary">Back</a>
+       <a class="btn btn btn-outline-warning" href="/Logout">Logout</a>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+  function show_response(id){
+    console.log(id)
+    $.ajax({
+      url: "/ViewFacultyResponse",
+      type: 'GET',
+      data: {unique_id: id,div :'1'},
+      dataType: "text",
+      success: function(response) {
+          $('#result_div').text(response);
+          console.log(response.results);
+          if(response == "Reject"){
+            var div = document.getElementById("hidden");
+            div.style.display = "block";  
+          }
+          
+
+      },
+      error: function(xhr) {
+
+        "1234"
+      }
+    });
+  }
+  function show_suggestion(id){
+    console.log(id)
+    $.ajax({
+      url: "/ViewFacultyResponse",
+      type: 'GET',
+      data: {unique_id: id,div :'2'},
+      dataType: "text",
+      success: function(response) {
+          $('#result_div2').text(response);
+          console.log(response.results);
+      },
+      error: function(xhr) {
+
+        "1234"
+      }
+    });
+  }
+  
+  function showTAresponse(id){
+    console.log(id)
+    $.ajax({
+      url: "/ViewTaResponse",
+      type: 'GET',
+      data: {unique_id: id},
+      dataType: "text",
+      success: function(response) {
+          $('#result_div3').text(response);
+          console.log(response.results);
+      },
+      error: function(xhr) {
+
+        "1234"
+      }
+    });
+  }
+
+</script>
+
+</body>
+</html>

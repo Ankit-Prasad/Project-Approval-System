@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<title>Student Login</title>
+
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+
+h1{
+  margin-top: 10px;
+  font-weight: bold;
+  }
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+
+.btn-outline-primary{
+  margin-left: 835px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+  
+.container {
+  padding: 16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<form action="/student_login" style="border:1px solid #ccc" method="POST">
+  <div class="container">
+    <h1>Student Login</h1>
+    
+    <br>
+    
+      <div class="form-group">
+    <label for="exampleInputEmail1"><b>Email address</b></label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="roll_number" placeholder="Please enter you enrollment number" required>
+  </div>
+
+     <div class="form-group">
+    <label for="exampleInputPassword1"><b>Password</b></label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="psw" required>
+  </div>
+
+    <div>
+      <button type="submit" name="mode" value="Login" class="btn btn-outline-success">Login</button>   
+      <a href="/registers" class="btn btn-outline-primary"> Not Registered? Sign Up</a>
+    </div>
+
+  </div>
+</form>
+</body>
+</html>

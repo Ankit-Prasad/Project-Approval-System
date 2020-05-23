@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<title>Faculty Login</title>
+
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.container {
+  padding: 16px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-outline-primary{
+  margin-left: 835px;
+}
+
+</style>
+</head>
+<body>
+
+<form action="/faculty_login" style="border:1px solid #ccc" method="POST">
+  <div class="container">
+    <h1>Faculty Login</h1>
+    
+    <br>
+    
+    <div class="form-group">
+    <label for="F_Id"><b>Faculty ID</b></label>
+    <input class="form-control" type="text" placeholder="Enter Faculty Id" name="F_Id" required>
+  </div>
+
+    <div class="form-group">
+    <label for="psw"><b>Password</b></label>
+    <input class="form-control" type="password" placeholder="Enter Password" name="psw" required>
+  </div>
+
+    <div>
+      <button class="btn btn-outline-success" type="submit" name="mode" value="Login">Login</button>   
+       <a href="/registerf" class="btn btn-outline-primary"> Not Registered? Sign Up</a>
+    </div>
+  </div>
+</form>
+
+</body>
+</html>

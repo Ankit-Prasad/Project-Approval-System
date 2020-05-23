@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Course</title>
+    <style>
+    	h2{
+    		margin-left: 5px;
+    		margin-top: 5px;
+    	}
+    	.btn-outline-warning, .btn-outline-success{
+    		margin-left: 5px;
+    		margin-right: 5px;
+    	}
+    </style>
+</head>
+
+<body>
+	 <h3>Welcome {{username}}</h3><br>
+	 <h2>Select Course</h2>
+	 <br>
+   <!--  <form action ="/student_course" method="POST">
+		 <label for="course"></label>
+		<select id="course" name="course">
+		  <option value="T2-19-CS816">Software Production Engineering</option>
+		  <option value="T2-19-DN615">Techno-Economics of Networks</option>
+		  <option value="T2-19-CD817">Optimization, Learning & Cognition</option>
+		  <option value="T2-19-DS823">Automatic Speech Recognition</option>
+		</select>
+	 -->
+
+<!-- <button type="submit">Submit</button>
+</form> -->
+
+     <form action = "/student_course" method="POST">
+     	<label for = "course"></label>
+     	<select id="course" name="course"> 
+			{% for item in results %}
+				<option value="{{item[0][0]}}">{{item[0][1]}}</option>
+			{% endfor %}
+		</select>	
+		<br><br>
+		<button class="btn btn btn-outline-success" type="submit">Submit</button>
+		<a class="btn btn btn-outline-warning" href="/Logout">Logout</a>
+</form>
+
+
+
+</body>
+
+</html>
+</body>
+
+</html>
