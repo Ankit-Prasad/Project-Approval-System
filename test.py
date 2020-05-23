@@ -35,9 +35,9 @@ class TestApp(unittest.TestCase):
 
 	def test_facultylogin(self):
 		print('\nTesting "Faculty Login" module...')
-		status = services.faculty_login('1', '1234')
+		status = services.faculty_login('001', '1234')
 		self.assertEqual(status, True)
-		status = services.faculty_login('1', '12345')
+		status = services.faculty_login('001', '12345')
 		self.assertEqual(status, False)
 		status = services.faculty_login('MT2019021', '1234')
 		self.assertEqual(status, False)
@@ -63,9 +63,9 @@ class TestApp(unittest.TestCase):
 
 	def test_talogin(self):
 		print('\nTesting "TA Login" module...')
-		status = services.ta_login('MT2019020', '1234')
+		status = services.ta_login('MT2018018', '1234')
 		self.assertEqual(status, True)
-		status = services.ta_login('MT2019020', '12345')
+		status = services.ta_login('MT2018018', '12345')
 		self.assertEqual(status, False)
 		status = services.ta_login('MT2019000', '1234')
 		self.assertEqual(status, False)
