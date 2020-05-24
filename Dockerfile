@@ -5,6 +5,7 @@ MAINTAINER Ankit Prasad
 
 # Copies the files from the source on the host into the container’s set destination
 COPY . /app
+RUN mkdir /app/uploads
 
 
 
