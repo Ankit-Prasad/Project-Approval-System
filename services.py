@@ -169,6 +169,7 @@ def UpdateProject(Group_Id,status,Suggestion,TA):
     connection = sqlite3.connect('project_approval.db')
     crsr = connection.cursor()
     user_id = crsr.execute('UPDATE Project SET Response = ?,Suggestion = ?,TA = ? WHERE Group_Id = ?',(status,Suggestion,TA,Group_Id))
+    user_id = crsr.execute('INSERT or IGNORE INTO TA_Proj(Group_Id,TA_Id) values(?,?)',(Group_Id,TA))
     connection.commit()
     return True
     crsr.close()
@@ -189,7 +190,7 @@ def getTAprojects(roll_number):
 def update_TA_Project(username,Group_Id,Suggestion):
     connection = sqlite3.connect('project_approval.db')
     crsr = connection.cursor()
-    user_id = crsr.execute('INSERT or IGNORE INTO TA_Proj(Group_Id,TA_Id,TA_Suggestion) values(?,?,?)',(Group_Id,username,Suggestion))
+    user_id = crsr.execute('UPDATE TA_Proj SET TA_Suggestion = ? WHERE Group_Id = ?',(Suggestion,Group_Id))
     connection.commit()
     return True
     crsr.close()
