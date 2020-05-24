@@ -18,16 +18,8 @@ node{
             app.push("latest")
         }
       }
-    stage('Deploying on Localhost')
-      {
-        step([
-            $class: "RundeckNotifier",
-            rundeckInstance: "rundeck",
-            jobId: "78640273-d666-4b8b-a94f-0b613f36955e",
-            includeRundeckLogs: true,
-            shouldWaitForRundeckJob: true,
-            shouldFailTheBuild: true,
-            tailLog: true
-        ])
-      }
+    stage('Deploying')
+    {
+        build job: 'deploy_pas'
+    }
 }
