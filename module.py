@@ -99,7 +99,8 @@ def uploadProjectDetails():
     if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             filename = str(result[0])+'.pdf'
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
+	    basedir = os.path.abspath(os.path.dirname(__file__))
+            file.save(os.path.join(basedir,app.config['UPLOAD_FOLDER'],filename))
             flash('File successfully uploaded')
     if (success == True):
         return render_template('student_dashboard.html',course=course,submit="you have submitted a project for review")
