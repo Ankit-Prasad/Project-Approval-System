@@ -25,7 +25,7 @@ node{
         def job = Jenkins.instance.getItemByFullName(jobname)
             for (build in job.builds) {
                 if (buildnum == build.getNumber().toInteger()){
-                    if (build.isBuilding()){
+                    //if (build.isBuilding()){
                         build.doStop();
                         build.doKill();
                     }
