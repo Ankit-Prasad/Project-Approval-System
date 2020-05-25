@@ -18,19 +18,19 @@ node{
             app.push("latest")
         }
       }
-    stage('Stopping Old Version')
-    {
-        def jobname = "deploy_pas"
-        def job = Jenkins.instance.getItemByFullName(jobname)
-            for (build in job.builds) {
-                if (build.getNumber().toInteger()){
+    //stage('Stopping Old Version')
+    //{
+        //def jobname = "deploy_pas"
+        //def job = Jenkins.instance.getItemByFullName(jobname)
+            //for (build in job.builds) {
+                //if (build.getNumber().toInteger()){
                     //if (build.isBuilding()){
-                        build.doStop();
+                        //build.doStop();
                         //build.doKill();
                     //}
-                }
-            }
-    }
+                //}
+            //}
+    //}
     stage('Deploying New Version')
     {
         build job: 'deploy_pas'
