@@ -18,7 +18,21 @@ node{
             app.push("latest")
         }
       }
-    stage('Deploying')
+    stage('Stopping Old Version')
+    {
+        def jobname = "deploy_pas"
+        def buildnum = 85
+        def job = Jenkins.instance.getItemByFullName(jobname)
+            for (build in job.builds) {
+                if (buildnum == build.getNumber().toInteger()){
+                    if (build.isBuilding()){
+                        build.doStop();
+                        build.doKill();
+                    }
+                }
+            }
+    }
+    stage('Deploying New Version')
     {
         build job: 'deploy_pas'
     }
