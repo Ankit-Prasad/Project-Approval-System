@@ -21,13 +21,12 @@ node{
     stage('Stopping Old Version')
     {
         def jobname = "deploy_pas"
-        def buildnum = 13
         def job = Jenkins.instance.getItemByFullName(jobname)
             for (build in job.builds) {
-                if (buildnum == build.getNumber().toInteger()){
+                if (build.getNumber().toInteger()){
                     //if (build.isBuilding()){
                         build.doStop();
-                        build.doKill();
+                        //build.doKill();
                     //}
                 }
             }
