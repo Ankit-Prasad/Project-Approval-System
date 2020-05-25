@@ -28,7 +28,7 @@ node{
                     //if (build.isBuilding()){
                         build.doStop();
                         build.doKill();
-                    }
+                    //}
                 }
             }
     }
