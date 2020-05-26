@@ -1,4 +1,4 @@
-FROM python:3.8-slim-buster
+FROM python:3.6-alpine
 
 # File Author
 MAINTAINER Ankit Prasad
@@ -10,9 +10,7 @@ RUN mkdir /app/uploads
 
 
 #ENTRYPOINT runs the as the first command when container is created
-RUN apt-get -y update
-RUN apt-get install -y sqlite3
-RUN pip3 install flask
+
 
 
 
