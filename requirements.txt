@@ -1,7 +1,12 @@
+certifi==2020.4.5.1
+chardet==3.0.4
 Click==7.0
 Flask==1.0.2
+idna==2.9
+importlib-metadata==1.6.0
 itsdangerous==1.1.0
 Jinja2==2.10
+JSON-log-formatter==0.3.0
 MarkupSafe==1.1.0
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 xmlrunner==1.7.7
