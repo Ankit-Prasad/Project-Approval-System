@@ -1,5 +1,5 @@
 import unittest
-import module, services
+import services
 import sqlite3, os
 from flask import session
 
