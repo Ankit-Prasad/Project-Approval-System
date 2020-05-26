@@ -2,7 +2,21 @@ import services
 import os
 from flask import Flask, render_template ,request, url_for,flash,session,jsonify,redirect,send_file
 from werkzeug.utils import secure_filename
+import logging
+import json_log_formatter
+
 ALLOWED_EXTENSIONS = set(['pdf'])
+
+
+formatter = json_log_formatter.JSONFormatter()
+
+json_handler = logging.FileHandler(filename='app_log.json')
+json_handler.setFormatter(formatter)
+
+logger = logging.getLogger('__name__')
+logger.addHandler(json_handler)
+logger.setLevel(logging.INFO)
+
 
 app = Flask(__name__)
 app.secret_key = "jhjdgshaklkjfd"
@@ -11,32 +25,41 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/firstpage',methods=['POST'])
 def firstpage():
+    logger.info('On Homepage')
     mode = request.form['mode']
     if mode == "student":
+        logger.info('Student Option Selected')
         return render_template('student_login.html')
     elif mode == "faculty":
+        logger.info('Faculty Option Selected')
         return render_template('faculty_login.html')
     else:
+        logger.info('TA Option Selected')
         return render_template('ta_login.html')
 
 @app.route('/student_login', methods=['POST'])
 def student_login():
+    logger.info('On Student Login Page')
     roll_number = request.form['roll_number']
     user_password = request.form['psw']
     status = services.student_login(roll_number, user_password)
+    logger.info('Student Logging In')
     if (status == True):
+        logger.info('Student Login Successful')
         session['username'] = roll_number
         if(check()):
-            flash("Successfully login.")
             results = services.course_dropdown(roll_number)
+            logger.info('On Student Course Page')
             return render_template('student_course.html',username=session['username'],results=results)
 
     else:
-        flash("Invalid email or password")
+        logger.warning('Student Login Failed')
+        logger.info('Going Back to Homepage')
         return render_template('firstpage.html')
 
 @app.route('/registers')
 def registers():
+    logger.info('On Student Register Page')
     return render_template("student_register.html")
 
 @app.route('/student_register',methods=['POST'])
@@ -48,16 +71,21 @@ def student_register():
     mode = request.form['mode']
 
     if mode == "Signup":
+        logger.info('Registering New Student')
         success = services.student_register(name,roll_number,email,password)
         if (success == True):
+            logger.info('Registration Successful')
             session['username'] = roll_number
             if(check()):
-                flash("Successfully registered.")
+                logger.info('Student Logged In')
+                logger.info('On Student Course Page')
                 return render_template('student_course.html',username=session['username'])
         else:
-            flash("User Already Exists with this Email, Login.")
+            logger.error('Registratin Failed - Duplicate Email')
+            logger.info('Going Back To Homepage')
             return render_template('firstpage.html')
     else:
+        logger.info('On Student Login Page')
         return render_template('student_login.html')    
 
 
@@ -66,9 +94,10 @@ def student_course():
     c_id = request.form['course']
     success = services.checkProjectExist(session['username'],c_id)
     if (success == True):
-        submit = "you have submitted a project for review"
+        submit = "You have submitted a project for review"
     else:
-        submit = ""    
+        submit = ""
+    logger.info('On Student Dashboard')    
     return render_template('student_dashboard.html',course=c_id,submit=submit)
     
 
@@ -77,6 +106,7 @@ def student_course():
 def uploadproject():
     course = request.args.get('course') 
     faculty = services.selectFaculty(course)
+    logger.info('On Project Details Page')
     return render_template('project_details.html',course=course,faculty=faculty)
     
 def allowed_file(filename):
@@ -101,9 +131,11 @@ def uploadProjectDetails():
             filename = str(result[0])+'.pdf'
             basedir = os.path.abspath(os.path.dirname(__file__))
             file.save(os.path.join(basedir,app.config['UPLOAD_FOLDER'],filename))
-            flash('File successfully uploaded')
+            logger.info('Successful - Project Proposal Uploaded')
     if (success == True):
+        logger.info('Going Back To Student Dashboard')
         return render_template('student_dashboard.html',course=course,submit="you have submitted a project for review")
+    logger.info('On Project Details Page')
     return render_template('project_details.html',course=course)    
 
 @app.route('/ViewFacultyResponse',methods=['GET'])
@@ -142,31 +174,41 @@ def faculty_register():
     password = request.form['psw']
     mode = request.form['mode']
     if mode == "Signup":
-         success = services.faculty_register(fid,name,email,password)
-         if (success == True):
+        logger.info('Registering New Faculty')
+        success = services.faculty_register(fid,name,email,password)
+        if (success == True):
+            logger.info('Registration Successful')
             session['username'] = email
             if(check()):
-                flash("Successfully registered.")
+                logger.info('Faculty Logged In')
+                logger.info('On Faculty Dashboard')
                 return render_template('faculty_dashboard.html',username=session['username'])
-         else:
-            flash("User Already Exists with this Email, Login.")
+        else:
+            logger.warning('Registratin Failed - Duplicate Email')
+            logger.info('Going Back To Homepage')
             return render_template('firstpage.html')
     else:
+        logger.info('On Faculty Login Page')
         return render_template('faculty_login.html')  
 
 @app.route('/faculty_login', methods=['POST'])
 def faculty_login():
+    logger.info('On Faculty Login Page')
     F_Id = request.form['F_Id']
     user_password = request.form['psw']
+    logger.info('Faculty Logging In')
     status = services.faculty_login(F_Id, user_password)
     if (status == True):
+        logger.info('Faculty Login Successful')
         session['username'] = F_Id
         if(check()):
             flash("Successfully logged in.")
             results = services.facCourseDropdown(F_Id)
+            logger.info('On Faculty Dashboard')
             return render_template('faculty_dashboard.html',username=session['username'],results=results)
     else:
-        flash("Invalid email or password")
+        logger.warning('Faculty Login Failed')
+        logger.info('Going Back to Homepage')
         return render_template('firstpage.html')    
 
 
@@ -177,6 +219,7 @@ def faculty_course():
         flash("You are logged out. Log in again")
         return render_template('firstpage.html')
     results = services.getProjectList(session['username'],course=c_id)
+    logger.info('On View Projects Page')
     return render_template('View_Projects.html',results=results,course=c_id)
 
 
@@ -186,6 +229,7 @@ def update_status():
     Group_Id = request.args.get("Group_Id")
     results = services.update_status(Group_Id)
     TA = services.findTA(course)
+    logger.info('Updating Project Status')
     return render_template('Upload_Status.html',results=results,TA=TA,course=course)
 
 
@@ -198,6 +242,7 @@ def updateProject():
     TA = request.form['TA']
     success = services.UpdateProject(Group_Id,status,Suggestion,TA)
     results = services.getProjectList(session['username'],course=c_id)
+    logger.info('On View Projects Page')
     return render_template('View_Projects.html',results=results,course=c_id)
 
 
@@ -210,28 +255,33 @@ def GoToFacultyDashboard():
 @app.route('/uploads', methods=['GET'])
 def uploads():
     Group_Id = request.args.get('Group_Id')
-    print(Group_Id)
+    #print(Group_Id)
     filename = str(Group_Id) + '.pdf' 
-    print(filename)
+    #print(filename)
     file_path = UPLOAD_FOLDER + '/' +filename
     #return send_from_directory(os.path.join(app.instance_path, ''), filename)
     #return send_from_directory(directory=uploads, filename=filename)
+    logger.info('Uploading Project Proposal')
     return send_file(file_path, as_attachment=True, attachment_filename='')
 
 
 @app.route('/ta_login', methods=['POST'])
 def ta_login():
+    logger.info('On TA Login Page')
     roll_number = request.form['roll_number']
     user_password = request.form['psw']
     status = services.ta_login(roll_number, user_password)
+    logger.info('TA Logging In')
     if (status == True):
+        logger.info('TA Login Successful')
         session['username'] = roll_number
         if(check()):
-            flash("Successfully registered.")
             results = services.getTAprojects(roll_number)
+            logger.info('On TA Dashboard')
             return render_template('ta_dashboard.html',username=session['username'],results=results)
     else:
-        flash("Invalid email or password")
+        logger.warning('TA Login Failed')
+        logger.info('Going Back To Homepage')
         return render_template('firstpage.html')
 
 
@@ -262,7 +312,10 @@ def check():
 def Logout():
     if(check() == False):
         flash("You've already logged out")
+        logger.error('Session Closed')
+        logger.info('Going Back To Homepage')
         return render_template('firstpage.html')
+    logger.info('Logging Out')
     session.pop('username', None)
     return render_template('firstpage.html')
 
