@@ -10,7 +10,7 @@ RUN mkdir /app/uploads
 
 
 #ENTRYPOINT runs the as the first command when container is created
-
+RUN pip3 install -r requirements.txt
 
 
 
