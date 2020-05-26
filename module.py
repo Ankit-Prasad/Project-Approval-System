@@ -10,7 +10,7 @@ ALLOWED_EXTENSIONS = set(['pdf'])
 
 formatter = json_log_formatter.JSONFormatter()
 
-json_handler = logging.FileHandler(filename='/log/app_log.json')
+json_handler = logging.FileHandler(filename='log/app_log.json')
 json_handler.setFormatter(formatter)
 
 logger = logging.getLogger('__name__')
