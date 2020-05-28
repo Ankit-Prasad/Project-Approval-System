@@ -2,16 +2,70 @@
 <html>
    <head>
     <title>Project Approval System</title>
-    <link rel="stylesheet" type="text/css" href="/static/first_page.css">
+    <style type="text/css">
+      body {
+        background-image: url('background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        /*opacity: 0.5;*/
+      }
+      button {
+  background-color: sandybrown;
+  color: white;
+  /*padding: 14px 20px;*/
+  /*margin: 20px 5;*/
+  border: none;
+  transition: 0.7s;
+  border-radius: 10px;
+  width: 200px;
+  height: 60px;
+  /*padding: 14px 25px;*/
+}
+button:hover {
+  background-color: mediumaquamarine; /* Green */
+  /*color: white;*/
+  text-decoration: none;
+}
+.content {
+  line-height: 5px;
+  height: 5px;
+  /*border: 3px solid green;*/
+  text-align: center;
+}
+
+.content button {
+  line-height: 0.2;
+  /*display: inline-block;*/
+  color: goldenrod;
+  margin: 5px 5;
+  vertical-align: middle;
+}
+.content h1 {
+  line-height: 6;
+  /*display: inline-block;*/
+  vertical-align: middle;
+  color: turquoise;
+  font-size: 60px;
+}
+a:link, a:visited {
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+    </style>
   </head>
   <body>
-    <h1>Project Approval System</h1>
-    <div class="content">
-    <form action="/firstpage" method="POST">  
-    <button type="submit" name = "mode" value = "student" class="button"><a href="student_login.html"><h3>Student Login</h3></a></button>
-    <button type="submit" name = "mode" value = "faculty" class="button"><a href="faculty_login.html"><h3>Faculty Login</h3></a></button>
-    <button type="submit" name = "mode" value = "ta" class="button"><a href="ta_login.html"><h3>TA Login</h3></a></button>
-  </form>
+    <div id="wrap">
+      <div class="content">
+        <h1 style="text-align:center; word-spacing: 10px;">Project   Approval   System</h1>
+        <form action="/firstpage" method="POST">  
+          <button style="margin:20px;" type="submit" name = "mode" value = "student" class="button"><a href="student_login.html"><h2>STUDENT</h2></a></button>
+          <button style="margin:20px;" type="submit" name = "mode" value = "faculty" class="button"><a href="faculty_login.html"><h2>FACULTY</h2></a></button>
+          <button style="margin:20px;" type="submit" name = "mode" value = "ta" class="button"><a href="ta_login.html"><h2>TA</h2></a></button>
+        </form>
+      </div>
     </div>
   </body>
 </html>
