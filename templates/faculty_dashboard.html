@@ -7,17 +7,43 @@
 
   <title>Faculty Dashboard</title>
 <style>
+  body {
+        background-image: url('background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+       }
   .form-control{
-    width: 20%
+    width: 850%;
   }
+  h2 {
+  line-height: 3;
+  /*display: inline-block;*/
+  vertical-align: middle;
+  color: turquoise;
+  font-size: 60px;
+  text-align: center;
+}
+h3 {
+  line-height: 3;
+  /*display: inline-block;*/
+  vertical-align: middle;
+  color: turquoise;
+  font-size: 45px;
+  text-align: center;
+}
+.container{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
 </style>
 </head>
 <body>
 
-<h1>Faculty Dashboard</h1>
+<h2>Faculty Dashboard</h2>
 <br>
 <h3>Welcome {{username}}</h3>
-
+<div class="container">
 <form action = "/faculty_course" method="POST">
       <label for = "course"></label>
       <select class="form-control" id="course" name="course"> 
@@ -28,5 +54,6 @@
     <br>
     <button class="btn btn-outline-success" type="submit">Submit</button>
 </form>
+</div>
 </body>
 </html>
