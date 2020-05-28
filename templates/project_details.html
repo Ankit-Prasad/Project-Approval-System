@@ -6,11 +6,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <title>Enter Project Details</title>
 <style>
-  h2{
+  body{
+    background-image: url('background.jpg');
+    color: turquoise;
+  }
+  h1{
     display: flex;
   justify-content: center;
   margin-top: 10px;
   font-weight: bold;
+  }
+  h2{
+    line-height: 2;
+    text-align: center;
   }
 
   input[type=text], input[type=password] {
@@ -39,18 +47,21 @@ button {
 {
   width: 50%;
 }
+/*h2{
+  font-size:60px;
+}*/
 </style>
 </head>
 
 <body>
-  {{course}}
+  <h1>{{course}}</h1>
 
 <h2>Enter Project Details</h2>
 
 <table class="table table-hover">
   <form action="/uploadProjectDetails?course={{course}}" method="POST" enctype="multipart/form-data">
   <tr>
-    <td>Project Title</td>
+    <td style="color:turquoise">Project Title</td>
     <td>
        <div class="form-group">
 		 <label for="Title"></label>
@@ -59,50 +70,50 @@ button {
   </td>
   </tr>
   <tr>
-    <td>Group Member 1</td>
+    <td style="color:turquoise">Group Member 1</td>
        <td>
          <div class="form-group">
      <label for="member_1"></label>
-    <input type="text" class="form-control" placeholder="Enter Name" name="member_1" required>
+    <input type="text" class="form-control" placeholder="Enter Roll No" name="member_1" required>
   </div>
   </td>
   </tr>
    <tr>
-    <td>Group Member 2</td>
+    <td style="color:turquoise">Group Member 2</td>
        <td>
          <div class="form-group">
      <label for="member_2"></label>
-    <input type="text" class="form-control" placeholder="Enter Name" name="member_2">
+    <input type="text" class="form-control" placeholder="Enter Roll No" name="member_2">
   </div>
   </td>
   </tr>
    <tr>
-    <td>Group Member 3</td>
+    <td style="color:turquoise">Group Member 3</td>
        <td>
          <div class="form-group">
      <label for="member_3"></label>
-    <input type="text" class="form-control" placeholder="Enter Name" name="member_3">
+    <input type="text" class="form-control" placeholder="Enter Roll No" name="member_3">
   </div>
   </td>
   </tr>
    <tr>
-    <td>Group Member 4</td>
+    <td style="color:turquoise">Group Member 4</td>
        <td>
          <div class="form-group">
      <label for="member_4"></label>
-    <input type="text" class="form-control" placeholder="Enter Name" name="member_4">
+    <input type="text" class="form-control" placeholder="Enter Roll No" name="member_4">
   </div>
   </td>
   </tr>
   <tr>
-    <td>Upload Project Proposal</td>
+    <td style="color:turquoise">Upload Project Proposal (.pdf format)</td>
     <td>
   		<input type="file" id="proposal_file" name="filename">
     </td>
   </tr>
   <tr>
      <tr>
-    <td>Faculty Name</td>
+    <td style="color:turquoise">Faculty Name</td>
     <td>
       <label for = "faculty"></label>
       <select id="faculty" name="faculty"> 
