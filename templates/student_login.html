@@ -8,7 +8,9 @@
 
 
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
+body {font-family: Arial, Helvetica, sans-serif;
+background-image: url('background.jpg');
+}
 
 
 h1{
@@ -54,18 +56,18 @@ input[type=text]:focus, input[type=password]:focus {
 
 <form action="/student_login" style="border:1px solid #ccc" method="POST">
   <div class="container">
-    <h1>Student Login</h1>
+    <h1 style="color:turquoise">Student Login</h1>
     
     <br>
     
       <div class="form-group">
-    <label for="exampleInputEmail1"><b>Email address</b></label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="roll_number" placeholder="Please enter you enrollment number" required>
+    <label for="exampleInputEmail1"><b style="color:turquoise">Roll Number</b></label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="roll_number" placeholder="Enter you enrollment number" required>
   </div>
 
      <div class="form-group">
-    <label for="exampleInputPassword1"><b>Password</b></label>
-    <input type="password" class="form-control" id="exampleInputPassword1" name="psw" required>
+    <label for="exampleInputPassword1"><b style="color:turquoise">Password</b></label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="psw" placeholder="Enter Password" required>
   </div>
 
     <div>
