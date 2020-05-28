@@ -34,7 +34,7 @@ node{
     stage('Deploying New Version')
     {
         def job = Jenkins.instance.getItemByFullName('deploy_pas')
-        job.currentBuild.result = 'ABORTED'
+        job.getBuilds().getLastBuild().result = 'ABORTED'
         build job: 'deploy_pas'
     }
 }
