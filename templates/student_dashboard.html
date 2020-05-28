@@ -6,7 +6,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <title>Student Dashboard</title>
 <style>
-  h2{
+  body{
+    background-image: url('background.jpg')
+  }
+  h1{
     display: flex;
   justify-content: center;
   margin-top: 10px;
@@ -21,6 +24,10 @@
   padding: 14px 20px;
   float: left;
   width: 50%;
+  color:turquoise;
+}
+.btn-outline-primary{
+   color:turquoise;
 }
 .clearfix::after {
   content: "";
@@ -31,41 +38,41 @@
 </head>
 <body>
 
-<h2>Student Dashboard</h2>
-<h3>{{course}}</h3>
+<h1 style="color:turquoise">Student Dashboard</h1>
+<h3 style="color:turquoise">{{course}}</h3>
 
 
 <table class="table table-hover">
   <tbody>
   <tr>
-    <td>Enter Project Details</td>
-    <td><a href="/uploadproject?course={{course}}" class="btn btn-outline-primary">Upload Project Details</a></td>
-    <td>{{submit}}</td>
+    <td style="color:turquoise">Enter Project Details</td>
+    <td style="color:turquoise"><a href="/uploadproject?course={{course}}" class="btn btn-outline-primary">Upload Project Details</a></td>
+    <td style="color:turquoise">{{submit}}</td>
   </tr>
 
   <tr>
-    <td>View Faculty Response</td>
-    <td><a href="#" onclick="show_response('{{course}}')" class="btn btn-outline-primary">Show</a></td>
-    <td><div id="result_div"></div></td>
+    <td style="color:turquoise">View Faculty Response</td>
+    <td style="color:turquoise"><a href="#" onclick="show_response('{{course}}')" class="btn btn-outline-primary">Show</a></td>
+    <td style="color:turquoise"><div id="result_div"></div></td>
  </tr>
 
   <tr>
-    <td>View Faculty Suggestion</td>
-    <td><a href="#" onclick="show_suggestion('{{course}}')" class="btn btn-outline-primary">Show</a></td>
-    <td><div id="result_div2"></div></td>
+    <td style="color:turquoise">View Faculty Suggestion</td>
+    <td style="color:turquoise"><a href="#" onclick="show_suggestion('{{course}}')" class="btn btn-outline-primary">Show</a></td>
+    <td style="color:turquoise"><div id="result_div2"></div></td>
   </tr>
 
-  <tbody style="display: none" id="hidden">
+  <tbody style="display: none; color:turquoise" id="hidden">
     <tr>
-      <td><a href="/uploadproject?course={{course}}" class="btn btn-outline-primary">Upload new Project</a></td>
+      <td style="color:turquoise"><a href="/uploadproject?course={{course}}" class="btn btn-outline-primary">Upload new Project</a></td>
     </tr>
   </tbody>
 
  
   <tr>
-    <td>View TA Response</td>
-    <td><a href="#" onclick="showTAresponse('{{course}}')" class="btn btn-outline-primary">Show</a></td>
-    <td><div id="result_div3"></div></td>
+    <td style="color:turquoise">View TA Response</td>
+    <td style="color:turquoise"><a href="#" onclick="showTAresponse('{{course}}')" class="btn btn-outline-primary">Show</a></td>
+    <td style="color:turquoise"><div id="result_div3"></div></td>
   </tr>
 
   </tbody>
