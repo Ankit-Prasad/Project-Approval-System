@@ -8,7 +8,9 @@
 
 
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
+body {font-family: Arial, Helvetica, sans-serif;
+background-image: url('background.jpg');
+}
 * {box-sizing: border-box}
 
 
@@ -46,14 +48,14 @@ input[type=text]:focus, input[type=password]:focus {
 
 <form action="/ta_login" style="border:1px solid #ccc" method="POST">
   <div class="container">
-    <h1>TA Login</h1>
+    <h1  style="color:turquoise">TA Login</h1>
     
     <br>
     
-    <label for="roll_number"><b>Enrollment Number</b></label>
+    <label for="roll_number"><b style="color:turquoise">Enrollment Number</b></label>
     <input type="text" placeholder="Enter Enrollment Number " name="roll_number" required>
 
-    <label for="psw"><b>Password</b></label>
+    <label for="psw"><b style="color:turquoise">Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
     
     <!-- <label for="Course"><b>Selelct a course</b></label>
@@ -63,7 +65,7 @@ input[type=text]:focus, input[type=password]:focus {
     </select> -->
     <div >
       <br><br>
-      <button type="submit" name="mode" value="Login"><h3>Login</h3></button>   
+      <button type="submit" class="btn btn-success" name="mode" value="Login"><h5>Login</h5></button>   
     </div>
   </div>
 </form>
