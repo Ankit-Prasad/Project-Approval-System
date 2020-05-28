@@ -33,7 +33,8 @@ node{
     //}
     stage('Deploying New Version')
     {
-        kill job: 'deploy_pas'
+        def job = Jenkins.instance.getItemByFullName('deploy_pas')
+        job.currentBuild.result = 'ABORTED'
         build job: 'deploy_pas'
     }
 }
