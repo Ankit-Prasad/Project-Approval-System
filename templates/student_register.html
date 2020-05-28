@@ -7,7 +7,9 @@
 <title>Student Sign Up</title>
 
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
+body {font-family: Arial, Helvetica, sans-serif;
+background-image: url('background.jpg');
+}
 * {box-sizing: border-box}
 
 
@@ -48,37 +50,37 @@ input[type=text]:focus, input[type=password]:focus {
 
 <form action="/student_register" style="border:1px solid #ccc" method="POST">
   <div class="container">
-    <h1>Student Registration</h1>
-    <p>Please fill in this form to create an account.</p>
+    <h1 style="color:turquoise">Student Registration</h1>
+    <p style="color:turquoise">Please fill this form to create an account.</p>
     <br>
     
     <div class="form-group">
-   <label for="name"><b>Name</b></label>
+   <label for="name"><b style="color:turquoise">Name</b></label>
     <input type="text" class="form-control" placeholder="Enter Full Name" name="name" required>
 </div>
     
     <div class="form-group">
-     <label for="roll_number"><b>Enrollment Number</b></label>
+     <label for="roll_number"><b style="color:turquoise">Roll Number</b></label>
     <input type="text" class="form-control" placeholder="Enter Enrollment Number" name="roll_number" required>
 </div>
     
     <div class="form-group">
-    <label for="email"><b>Email(College Email)</b></label>
+    <label for="email"><b style="color:turquoise">Email(College Email)</b></label>
     <input type="text" class="form-control" placeholder="Enter Email" name="email" required>
 </div>
 
 <div class="form-group">
-    <label for="psw"><b>Password</b></label>
+    <label for="psw"><b style="color:turquoise">Password</b></label>
     <input type="password" class="form-control" placeholder="Enter Password" name="psw" required>
 </div>
 
     <div class="form-group">
-    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <label for="psw-repeat"><b style="color:turquoise">Repeat Password</b></label>
     <input type="password" class="form-control" placeholder="Repeat Password" name="psw-repeat" required>
 </div>
 
     <div class="clearfix">
-      <button type="submit" class="btn btn-outline-success" name="mode" value="Signup">Sign Up</button>
+      <button type="submit" style="color:turquoise" class="btn btn-outline-success" name="mode" value="Signup">Sign Up</button>
     </div>
   </div>
 </form>
