@@ -33,6 +33,7 @@ node{
     //}
     stage('Deploying New Version')
     {
+        kill job: 'deploy_pas'
         build job: 'deploy_pas'
     }
 }
