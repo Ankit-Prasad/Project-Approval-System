@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <title>Update Status</title>
 <style>
+  body{
+    background-image: url('background.jpg');
+  }
 table {
   h2{
     display: flex;
@@ -25,20 +28,21 @@ button {
 </style>
 </head>
 
-<body>
-
-  <h3>Project Details</h3>
+<body style="color:turquoise">
+<br>
+  <h1 style="text-align: center;">Project Details</h1>
+  <br>
 
     {% for item in results %}
     <form action="updateProject?Group_Id={{item[0][0]}}&course={{course}}" method="POST">
 
- <table class="table table-hover">
+ <table style="color:turquoise;" class="table table-hover">
    <tr>
-      <td>Group ID </td>
+      <td style="font-weight: bold;">Group ID </td>
       <td>{{item[0][0]}}</td>
     </tr>
     <tr>
-      <td>Members</td>
+      <td style="font-weight: bold;">Members</td>
       <td>{{item[0][2]}}<br>{{item[0][3]}}<br>{{item[0][4]}}<br>{{item[0][5]}} </td>
     </tr>
     <!-- <tr>
@@ -54,34 +58,34 @@ button {
       <td>{{item[0][5]}}</td>
     </tr>
     <tr> -->
-      <td>Project Name</td>
+      <td style="font-weight: bold;">Project Name</td>
       <td>{{item[0][6]}}</td>
     </tr>
     <tr>
-      <td>Project Doc</td>
-      <td> <a href="/uploads?Group_Id={{item[0][0]}}"  target="blank" >Download</a></td>
+      <td style="font-weight: bold;">Project Document</td>
+      <td> <a style="color:turquoise" href="/uploads?Group_Id={{item[0][0]}}"  target="blank" >Download</a></td>
     </tr>
     <tr>
-      <td>Faculty ID</td>
+      <td style="font-weight: bold;">Faculty ID</td>
       <td>{{item[0][7]}}</td>
     </tr>
     
     <tr>
-      <td>Status</td>
+      <td style="font-weight: bold;">Status</td>
       <td><input type="radio" id="Approve" name="status" value="Approve" onclick="ShowHideDiv()">
           <label for="Approve">Approve</label><br>
           <input type="radio" id="Reject" name="status" value="Reject">
           <label for="Reject">Reject</label></td> 
     </tr>
     <tr>
-      <td>Suggestion/Comment</td>
+      <td style="font-weight: bold;">Suggestion/Comment</td>
       <td><textarea name="Suggestion" cols="50" rows="5"></textarea></td>
      </tr>
      <tbody style="display:none" id="ta" >
      <tr>
-       <td>Assign TA</td>
+       <td style="font-weight: bold;">Assign TA</td>
        <td>
-          <select id="TA" name="TA"> 
+          <select " id="TA" name="TA"> 
             {% for item in TA %}
           <option value="{{item[0][0]}}">{{item[0][1]}}</option>
             {% endfor %}
@@ -91,7 +95,7 @@ button {
      </tbody>    
   </table>
 
-  <button type="submit">Submit</button>
+  <button class="btn btn-success" type="submit">Submit</button>
    </form>
   {% endfor %}
   <script type="text/javascript">
