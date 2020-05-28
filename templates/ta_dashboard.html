@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <title>Student Dashboard</title>
 <style>
+  body
+  {
+    background-image: url('background.jpg');
+  }
   h2{
     display: flex;
   justify-content: center;
@@ -27,27 +31,32 @@
   clear: both;
   display: table;
 }
+caption{
+  color: turquoise;
+}
 </style>
 </head>
 
 <body>
-	Welcome {{username}}
+  <br><br>
+	<h1 style="color:turquoise; text-align: center;">Welcome {{username}}</h1>
    <br><br>
-   <caption>DETAILS OF PROJECTS UNDER YOU</caption>
+   <caption style="color:turquoise">DETAILS OF PROJECTS UNDER YOU</caption>
+   <br>
     <table class="table table-hover">
   
   <thead>
     <tr role="row">
-      <th role="columnheader" scope="col">GROUP ID</th>
-      <th role="columnheader" scope="col">PROJECT NAME</th>
+      <th style="color:turquoise; font-weight: bold;" role="columnheader" scope="col">GROUP ID</th>
+      <th style="color:turquoise; font-weight: bold;" role="columnheader" scope="col">PROJECT NAME</th>
       <th></th>
     </tr>
   </thead>
   {% for item in results %}
   <tbody role="rowgroup">
     <tr role="row">
-      <td role="cell" data-label="GROUP ID">{{item[0][0]}}</td>
-      <td role="cell" data-label="PROJECT NAME"><a href="/update_TA_status?Group_Id={{item[0][0]}}">{{item[0][1]}}</a></td>
+      <td style="color:turquoise" role="cell" data-label="GROUP ID">{{item[0][0]}}</td>
+      <td style="color:turquoise" role="cell" data-label="PROJECT NAME"><a  style="color:turquoise" href="/update_TA_status?Group_Id={{item[0][0]}}">{{item[0][1]}}</a></td>
     </tr>
   </tbody>
   {% endfor %}
