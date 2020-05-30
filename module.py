@@ -55,7 +55,8 @@ def student_login():
     else:
         logger.warning('Student Login Failed')
         logger.info('Going Back to Homepage')
-        return render_template('firstpage.html')
+        error = 'Invalid credentials! Please try again'
+        return render_template('student_login.html', error=error)
 
 @app.route('/registers')
 def registers():
@@ -209,7 +210,8 @@ def faculty_login():
     else:
         logger.warning('Faculty Login Failed')
         logger.info('Going Back to Homepage')
-        return render_template('firstpage.html')    
+        error = 'Invalid credentials! Please try again'
+        return render_template('faculty_login.html', error=error)    
 
 
 @app.route('/faculty_course',methods=['POST'])
@@ -282,7 +284,8 @@ def ta_login():
     else:
         logger.warning('TA Login Failed')
         logger.info('Going Back To Homepage')
-        return render_template('firstpage.html')
+        error = 'Invalid credentials! Please try again'
+        return render_template('ta_login.html', error=error)
 
 
 @app.route('/update_TA_status',methods=['GET','POST'])
