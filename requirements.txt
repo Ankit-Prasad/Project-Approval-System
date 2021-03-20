@@ -5,7 +5,7 @@ Flask==1.0.2
 idna==2.9
 importlib-metadata==1.6.0
 itsdangerous==1.1.0
-Jinja2==2.10
+Jinja2==2.11.3
 JSON-log-formatter==0.3.0
 MarkupSafe==1.1.0
 Werkzeug==0.15.3
